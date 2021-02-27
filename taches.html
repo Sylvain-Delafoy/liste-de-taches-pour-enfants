@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <title>Liste d'activités de la journée</title>
+  <meta charset="UTF-8" />
+  <style>
+    @media print {
+      @page {
+        size: A4 landscape;
+      }
+      * {
+        color-adjust: exact !important;
+      }
+    }
+    html {
+      height: 100%;
+    }
+    body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+
+      font-size: 11px;
+      background: #fff;
+      /*Les lettres majuscules "baton" sont les premières apprises*/
+      font-variant-caps: small-caps;
+
+      display: grid;
+      grid-template-areas:
+        "lever midi    diner"
+        "lever aprem   diner"
+        "lever soir    coucher"
+        "lever soir    coucher"
+        "matin jeusoir coucher";
+      grid-template-rows: repeat(5, 20%);
+      grid-template-columns: repeat(3, 33%);
+
+    }
+    body > .periode {
+      display: flex;
+      flex-direction: column;
+
+      border: 1px solid gray;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    body > .periode > .tache {
+      flex: 1;
+      display: grid;
+      grid-template-areas: "coche image libelle";
+      grid-template-columns: 1fr 1fr 1fr;
+
+      border: 1px solid lightgray;
+      background-color: rgba(255, 255, 255, 0.73);
+    }
+    body > .periode > .tache.choice {
+      display: grid;
+      grid-template-areas: "coche image image2 libelle";
+      grid-template-columns: 2fr 1fr 1fr 2fr;
+    }
+
+    body > .periode > .tache > .coche {
+      grid-area: coche;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    body > .periode > .tache > .coche > .zonecoche {
+      /*Correspond aux dimensions du cache camera*/
+      width: 1.8cm;
+      height: 0.9cm;
+      padding: 2mm;
+      box-sizing: border-box;
+      line-height: 0.5cm; /*centers the smiley vertically*/
+      text-align: left;
+    }
+    body > .periode > .tache > .coche > .zonecoche::before {
+      content: "😁";
+    }
+
+    body > .periode > .tache > .image {
+      grid-area: image;
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    body > .periode > .tache > .image.image2 {
+      grid-area: image2;
+    }
+    body > .periode > .tache > .libelle {
+      grid-area: libelle;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #lever {
+      grid-area: lever;
+      background-image: url("images/Morning.svg");
+    }
+    #matin {
+      grid-area: matin;
+      background-image: url("images/tent-0032588nahxbh.svg");
+    }
+    #midi {
+      grid-area: midi;
+      background-image: url("images/318158.svg");
+    }
+
+    #aprem {
+      grid-area: aprem;
+      background-image: url("images/tent-0032588nahxbh.svg");
+    }
+    #soir {
+      grid-area: soir;
+      background-image: url("images/rubberduck-0040441kwnkhh.svg");
+    }
+    #diner {
+      grid-area: diner;
+      background-image: url("images/publicdomainq-0006620gzapmv.svg");
+    }
+    #coucher {
+      grid-area: coucher;
+      background-image: url("images/coucher.svg");
+    }
+    #jeusoir {
+      grid-area: jeusoir;
+      background-image: url("images/toyrobot-0030194bkjxdh.svg");
+    }
+  </style>
+  <body>
+    <div id="lever" class="periode">
+      <div class="tache">
+        <div class="coche"><div class="zonecoche"></div></div>
+        <div class="libelle">biberon</div>
+        <div
+          class="image"
+          style="background-image: url('images/biberon.svg')"
+        ></div>
+      </div>
+      <div class="tache">
+        <div class="coche"><div class="zonecoche"></div></div>
+        <div class="libelle">pot</div>
+        <div
+          class="image"
+          style="background-image: url('images/simplified-toilet-paper.svg')"
+        ></div>
+      </div>
+      <div class="tache">
+        <div class="coche"><div class="zonecoche"></div></div>
+        <div class="libelle">habillage</div>
+        <div
+          class="image"
+          style="background-image: url('images/drycleaner2-0038991jyapnk.svg')"
+        ></div>
+      </div>
+      <div class="tache">
+        <div class="coche"><div class="zonecoche"></div></div>
+        <div class="libelle">médicaments</div>
+        <div
+          class="image"
+          style="background-image: url('images/1547148568.svg')"
+        ></div>
+      </div>
+    </div>
+    <div id="matin" class="periode">
+      <div class="tache choice">
+        <div class="coche"><div class="zonecoche"></div></div>
+        <div class="libelle">ecole ou jouer</div>
+        <div
+          class="image"
+          style="background-image: url('images/1554895067.svg')"
+        ></div>
+        <div
+          class="image image2"
+          style="background-image: url('images/publicdomainq-shop.svg')"
+        ></div>
+      </div>
+    </div>
+    <div id="midi" class="periode">
+      <div class="tache">
+        <div class="coche"><div class="zonecoche"></div></div>
+        <div class="libelle">Repas</div>
+        <div
+          class="image"
+          style="background-image: url('images/publicdomainq-salad.svg')"
+        ></div>
+      </div>
+    </div>
+    <div id="aprem" class="periode">
+      <div class="tache choice">
+        <div class="coche"><div class="zonecoche"></div></div>
+        <div class="libelle">ecole ou jouer</div>
+        <div
+          class="image"
+          style="background-image: url('images/1554895067.svg')"
+        ></div>
+        <div
+          class="image image2"
+          style="background-image: url('images/1550858452.svg')"
+        ></div>
+      </div>
+    </div>
+    <div id="soir" class="periode">
+      <div class="tache">
+        <div class="coche"><div class="zonecoche"></div></div>
+        <div class="libelle">gouter</div>
+        <div
+          class="image"
+          style="background-image: url('images/1545744617.svg')"
+        ></div>
+      </div>
+      <div class="tache">
+        <div class="coche"><div class="zonecoche"></div></div>
+        <div class="libelle">Bain et Pyjama</div>
+        <div
+          class="image"
+          style="background-image: url('images/1535109183.svg')"
+        ></div>
+      </div>
+    </div>
+    <div id="jeusoir" class="periode">
+      <div class="tache">
+        <div class="coche"><div class="zonecoche"></div></div>
+        <div class="libelle">Jeu calme</div>
+        <div
+          class="image"
+          style="
+            background-image: url('images/publicdomainq-0006140remcca.svg');
+          "
+        ></div>
+      </div>
+    </div>
+    <div id="diner" class="periode">
+      <div class="tache">
+        <div class="coche"><div class="zonecoche"></div></div>
+        <div class="libelle">Repas</div>
+        <div
+          class="image"
+          style="
+            background-image: url('images/publicdomainq-0012557mbaqnh.svg');
+          "
+        ></div>
+      </div>
+      <div class="tache">
+        <div class="coche"><div class="zonecoche"></div></div>
+        <div class="libelle">médicaments</div>
+        <div
+          class="image"
+          style="background-image: url('images/1547148568.svg')"
+        ></div>
+      </div>
+    </div>
+    <div id="coucher" class="periode">
+      <div class="tache">
+        <div class="coche"><div class="zonecoche"></div></div>
+        <div class="libelle">Pot</div>
+        <div
+          class="image"
+          style="background-image: url('images/simplified-toilet-paper.svg')"
+        ></div>
+      </div>
+      <div class="tache">
+        <div class="coche"><div class="zonecoche"></div></div>
+        <div class="libelle">Histoire</div>
+        <div
+          class="image"
+          style="background-image: url('images/publicdomainq-reading.svg')"
+        ></div>
+      </div>
+      <div class="tache">
+        <div class="coche"><div class="zonecoche"></div></div>
+        <div class="libelle">Biberon</div>
+        <div
+          class="image"
+          style="background-image: url('images/biberon.svg')"
+        ></div>
+      </div>
+    </div>
+  </body>
+</html>
